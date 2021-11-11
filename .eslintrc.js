@@ -19,9 +19,13 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    camelcase: 'off',
+    'default-param-last': 'off',
+    'react/jsx-no-useless-fragment': 'off',
     'react/function-component-definition': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/require-default-props': 'off',
+    'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
     'arrow-body-style': 'off',
     'no-use-before-define': 'off',

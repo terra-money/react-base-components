@@ -1,1 +1,1 @@
-export * from './components/Thing';
+export * from './components/tx-description';
