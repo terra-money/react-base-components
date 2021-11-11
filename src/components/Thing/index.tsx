@@ -1,11 +1,7 @@
 import React from 'react';
 
 const Thing = (): React.ReactElement => {
-  return (
-    <>
-      Thing
-    </>
-  );
+  return <>Thing</>;
 };
 
-export {Thing};
+export { Thing };
