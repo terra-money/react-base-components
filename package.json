@@ -84,7 +84,7 @@
     ]
   },
   "dependencies": {
-    "@terra-money/terra.js": "^2.1.22",
+    "@terra-money/terra.js": "^2.1.23",
     "react-query": "^3.32.1",
     "terra-utils": "^1.1.2"
   }
