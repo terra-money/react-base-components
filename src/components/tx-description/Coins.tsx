@@ -14,7 +14,7 @@ const Coins = ({ children }: { children: string }) => {
 
   const coins = children.split(',');
 
-  if (coins.length > 1 && !config?.showAllCoins) {
+  if (config?.maxRenderCoins && coins.length > config.maxRenderCoins) {
     return <strong>multiple coins</strong>;
   }
 
