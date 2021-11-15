@@ -4,6 +4,7 @@ import Coin from './Coin';
 
 const Coins = ({ children }: { children: string }) => {
   const { config } = useProps();
+  const printCoins = config?.printCoins || Infinity;
 
   if (children.endsWith(','))
     return (
@@ -14,18 +15,18 @@ const Coins = ({ children }: { children: string }) => {
 
   const coins = children.split(',');
 
-  if (coins.length > 1 && !config?.showAllCoins) {
-    return <strong>multiple coins</strong>;
-  }
-
   return (
     <>
-      {coins.map((coin, i) => (
-        <Fragment key={`fg-${i.toString()}`}>
-          {!!i && ', '}
-          <Coin>{coin}</Coin>
-        </Fragment>
-      ))}
+      {coins.length > printCoins ? (
+        <strong>multiple coins</strong>
+      ) : (
+        coins.map((coin, i) => (
+          <Fragment key={i}>
+            {!!i && ', '}
+            <Coin>{coin}</Coin>
+          </Fragment>
+        ))
+      )}
     </>
   );
 };
