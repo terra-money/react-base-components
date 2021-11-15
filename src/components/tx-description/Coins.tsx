@@ -21,7 +21,7 @@ const Coins = ({ children }: { children: string }) => {
         <strong>multiple coins</strong>
       ) : (
         coins.map((coin, i) => (
-          <Fragment key={`fg-${i.toString()}`}>
+          <Fragment key={i}>
             {!!i && ', '}
             <Coin>{coin}</Coin>
           </Fragment>

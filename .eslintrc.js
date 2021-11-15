@@ -21,6 +21,7 @@ module.exports = {
   rules: {
     camelcase: 'off',
     'default-param-last': 'off',
+    'react/no-array-index-key': 'off',
     'react/jsx-no-useless-fragment': 'off',
     'react/function-component-definition': 'off',
     'react/react-in-jsx-scope': 'off',
