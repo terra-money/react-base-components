@@ -22,8 +22,8 @@ export default meta;
 
 const CONFIG = {
   name: 'testnet',
-  URL: 'https://bombay-lcd.terra.dev',
-  chainID: 'bombay-12',
+  URL: 'https://pisco-lcd.terra.dev',
+  chainID: 'pisco-12',
 };
 
 const queryClient = new QueryClient();

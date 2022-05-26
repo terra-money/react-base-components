@@ -1,8 +1,8 @@
 import { readDenom } from 'terra-utils';
 
 export const REGEXP = {
-  ADDRESS: /(terra1[a-z0-9]{38})|(terravaloper[a-z0-9]{39})/g,
-  COIN: /^\d+((terra1[a-z0-9]{38})|(u[a-z]{1,4}))/g,
+  ADDRESS: /^terra1(?:[a-z0-9]{58}|[a-z0-9]{38})$|(terravaloper[a-z0-9]{39})/g,
+  COIN: /^\d+(terra1(?:[a-z0-9]{58}|[a-z0-9]{38})$)|(u[a-z]{1,4})/g,
   IBC: /(ibc)/g,
 };
 
