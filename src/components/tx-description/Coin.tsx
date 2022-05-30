@@ -5,11 +5,13 @@ import { formatDenom, splitTokenText } from './helpers/utility';
 import { DEFAULT_DECIMALS } from './helpers/constants';
 import useTokenContractQuery from './helpers/useTokenContractQuery';
 import useDenomTrace from './hook/useDenomTrace';
+import useIsClassic from './hook/useIsClassic';
 import TokenAddress from './TokenAddress';
 import FinderLink from './FinderLink';
 import { useLCDClient } from './helpers/NetworkProvider';
 
 const Coin = ({ children: coin }: { children: string }) => {
+  const isClassic = useIsClassic();
   const { amount, token } = splitTokenText(coin);
   const { data: tokenInfo } = useTokenContractQuery(token);
   const lcd = useLCDClient();
@@ -24,7 +26,9 @@ const Coin = ({ children: coin }: { children: string }) => {
       </FinderLink>
     );
   } else if (isDenomTerraNative(token)) {
-    unit = <>{readDenom(token)}</>;
+    const denom = readDenom(token);
+    const classicDenom = denom === 'Luna' ? 'Lunc' : `${denom}C`;
+    unit = <>{isClassic ? classicDenom : denom}</>;
   } else if (data) {
     unit = <>{formatDenom(data.base_denom)}</>;
   } else {
