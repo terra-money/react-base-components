@@ -9,12 +9,14 @@ import useIsClassic from './hook/useIsClassic';
 import TokenAddress from './TokenAddress';
 import FinderLink from './FinderLink';
 import { useLCDClient } from './helpers/NetworkProvider';
+import { useIBCWhitelist } from './hook/useIBCWhitelist';
 
 const Coin = ({ children: coin }: { children: string }) => {
   const isClassic = useIsClassic();
   const { amount, token } = splitTokenText(coin);
   const { data: tokenInfo } = useTokenContractQuery(token);
   const lcd = useLCDClient();
+  const { data: ibcWhitelist } = useIBCWhitelist();
   const { data } = useDenomTrace(coin.replace(amount, ''), lcd);
 
   let unit;
@@ -35,11 +37,13 @@ const Coin = ({ children: coin }: { children: string }) => {
     unit = <>{token}</>;
   }
 
-  const decimals = tokenInfo?.decimals || DEFAULT_DECIMALS;
+  const hash = token?.replace('ibc/', '');
+  const ibcInfo = ibcWhitelist?.[hash ?? ''];
+  const decimals = tokenInfo?.decimals || ibcInfo?.decimals || DEFAULT_DECIMALS;
 
   return (
     <strong>
-      {readAmount(amount, { decimals, comma: true })} {unit}
+      {readAmount(amount, { decimals, comma: true })} {ibcInfo?.symbol ?? unit}
     </strong>
   );
 };

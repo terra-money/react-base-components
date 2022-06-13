@@ -22,3 +22,13 @@ export interface ContractInfo {
   name: string;
   icon: string;
 }
+
+export interface IBCTokenInfo {
+  denom: string;
+  path: string;
+  base_denom: string;
+  symbol: string;
+  name: string;
+  icon: string;
+  decimals?: number;
+}
